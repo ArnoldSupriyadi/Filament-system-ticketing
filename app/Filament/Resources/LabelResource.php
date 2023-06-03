@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
-use App\Models\Category;
+use App\Filament\Resources\LabelResource\Pages;
+use App\Filament\Resources\LabelResource\RelationManagers;
+use App\Models\Label;
 use Filament\Forms;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\TextInput;
@@ -16,11 +16,10 @@ use Filament\Tables\Columns\CheckboxColumn;
 use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 
-class CategoryResource extends Resource
+class LabelResource extends Resource
 {
-    protected static ?string $model = Category::class;
+    protected static ?string $model = Label::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -30,13 +29,7 @@ class CategoryResource extends Resource
             ->schema([
                 TextInput::make('name')
                 ->required()
-                ->reactive()
-                ->afterStateUpdated(function($state,$set){
-                    $set('slug', Str::slug($state));
-                }),
-
-                TextInput::make('slug')
-                ->required(),
+                ->reactive(),
 
                 Checkbox::make('is_active'),
             ]);
@@ -47,14 +40,15 @@ class CategoryResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                CheckboxColumn::make('is_active')
+                CheckboxColumn::make('is_active'),
             ])
             ->filters([
                 //
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make()
+                Tables\Actions\DeleteAction::make(),
+                
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
@@ -71,9 +65,10 @@ class CategoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListCategories::route('/'),
-            'create' => Pages\CreateCategory::route('/create'),
-            'edit' => Pages\EditCategory::route('/{record}/edit'),
+            'index' => Pages\ListLabels::route('/'),
+            'create' => Pages\CreateLabel::route('/create'),
+            'view' => Pages\ViewLabel::route('/{record}'),
+            'edit' => Pages\EditLabel::route('/{record}/edit'),
         ];
     }    
 }

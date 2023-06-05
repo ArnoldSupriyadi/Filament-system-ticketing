@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\CategoryResource\Pages;
+namespace App\Filament\Resources\TicketResource\Pages;
 
-use App\Filament\Resources\CategoryResource;
+use App\Filament\Resources\TicketResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditCategory extends EditRecord
+class EditTicket extends EditRecord
 {
-    protected static string $resource = CategoryResource::class;
+    protected static string $resource = TicketResource::class;
 
     protected function getRedirectUrl(): string
     {

@@ -14,4 +14,8 @@ class Label extends Model
         'is_active'
     ];
     
+    public function tickets()
+    {
+        return $this->belongsToMany(Ticket::class);
+    }
 }

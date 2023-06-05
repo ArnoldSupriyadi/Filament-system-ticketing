@@ -4,9 +4,9 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\TicketResource\Pages;
 use App\Filament\Resources\TicketResource\RelationManagers;
+use App\Filament\Resources\TicketResource\RelationManagers\CategoriesRelationManager;
+use App\Filament\Resources\TicketResource\RelationManagers\LabelsRelationManager;
 use App\Models\Ticket;
-use Filament\Forms;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -17,8 +17,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\TextInputColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 
 class TicketResource extends Resource
 {
@@ -72,7 +71,8 @@ class TicketResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            CategoriesRelationManager::class,
+            LabelsRelationManager::class,
         ];
     }
     

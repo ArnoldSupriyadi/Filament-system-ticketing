@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\LabelResource\Pages;
+namespace App\Filament\Resources\UserResource\Pages;
 
-use App\Filament\Resources\LabelResource;
+use App\Filament\Resources\UserResource;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
-class CreateLabel extends CreateRecord
+class CreateUser extends CreateRecord
 {
-    protected static string $resource = LabelResource::class;
+    protected static string $resource = UserResource::class;
 
     protected function getRedirectUrl(): string
     {

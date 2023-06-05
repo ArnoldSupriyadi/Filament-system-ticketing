@@ -13,6 +13,7 @@ class ListCategories extends ListRecords
     protected function getActions(): array
     {
         return [
+            Actions\DeleteAction::make(),
             Actions\CreateAction::make(),
         ];
     }

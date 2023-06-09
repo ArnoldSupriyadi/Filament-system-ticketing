@@ -50,6 +50,7 @@ class CategoryResource extends Resource
             ->columns([
                 TextColumn::make('name'),
                 CheckboxColumn::make('is_active')
+                    ->disabled(!auth()->user()->hasPermissions('category_edit')),
             ])
             ->filters([
                 //

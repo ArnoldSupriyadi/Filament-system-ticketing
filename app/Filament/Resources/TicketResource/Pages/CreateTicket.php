@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\TicketResource\Pages;
 
 use App\Filament\Resources\TicketResource;
+use Filament\Notifications\Notification;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateTicket extends CreateRecord
@@ -12,6 +13,11 @@ class CreateTicket extends CreateRecord
     protected function getRedirectUrl(): string
     {
         return $this->getResource()::getUrl('index');
+    }
+
+    protected function getCreatedNotificationTitle(): ?string
+    {
+        return "Ticket Created";
     }
 
     protected function mutateFormDataBeforeCreate(array $data): array

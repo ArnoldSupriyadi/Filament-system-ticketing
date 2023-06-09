@@ -2,26 +2,26 @@
 
 namespace App\Policies;
 
-use App\Models\Label;
+use App\Models\Ticket;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class LabelPolicy
+class TicketPolicy
 {
     /**
      * Determine whether the user can view any models.
      */
     public function viewAny(User $user): bool
     {
-        return $user->hasPermissions('label_access');
+        return $user->hasPermissions('ticket_access');
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Label $label): bool
+    public function view(User $user, Ticket $ticket): bool
     {
-        return $user->hasPermissions('label_show');
+        return $user->hasPermissions('ticket_show');
     }
 
     /**
@@ -29,34 +29,35 @@ class LabelPolicy
      */
     public function create(User $user): bool
     {
-        return $user->hasPermissions('label_create');
+        return $user->hasPermissions('ticket_create');
     }
 
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Label $label): bool
+    public function update(User $user, Ticket $ticket): bool
     {
-        return $user->hasPermissions('label_edit');
+        return $user->hasPermissions('ticket_edit');
     }
+    
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Label $label): bool
+    public function delete(User $user, Ticket $ticket): bool
     {
-        return $user->hasPermissions('label_delete');
+        return $user->hasPermissions('ticket_delete');
     }
 
     public function deleteAny(User $user)
     {
-        return $user->hasPermissions('label_delete');
+        return $user->hasPermissions('ticket_delete');
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Label $label): bool
+    public function restore(User $user, Ticket $ticket): bool
     {
         //
     }
@@ -64,7 +65,7 @@ class LabelPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Label $label): bool
+    public function forceDelete(User $user, Ticket $ticket): bool
     {
         //
     }
